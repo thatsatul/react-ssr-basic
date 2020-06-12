@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { storeDataInStorage, getDataFromStorage} from '../../utils/storage';
 import {
   ROOT,
   REQUEST_NEWS,
@@ -8,6 +8,8 @@ import {
 
 
 export const fetchNewsTopics = page => async dispatch => {
+
+  storeDataInStorage();
   const finalPage = page || 1;
   try {
     dispatch({ type: REQUEST_NEWS });
