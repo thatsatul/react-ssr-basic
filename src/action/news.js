@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { storeDataInStorage, getDataFromStorage} from '../../utils/storage';
+import { storeDataByPage, getDataByPage} from '../../utils/storage';
 import {
   ROOT,
   REQUEST_NEWS,
@@ -8,15 +8,19 @@ import {
 
 
 export const fetchNewsTopics = page => async dispatch => {
-
-  storeDataInStorage();
+  dispatch({ type: REQUEST_NEWS });
   const finalPage = page || 1;
-  try {
-    dispatch({ type: REQUEST_NEWS });
-    const res = await axios.get(`${ROOT}/api/v1/search?page=${finalPage}`);
-    dispatch({ type: RECEIVE_NEWS, payload: res.data.hits });
-  } catch(e) {
-      console.log(e);
-    dispatch({ type: RECEIVE_NEWS, payload: {} });
+  const storedData = getDataByPage(finalPage);
+  if(storedData) {
+    dispatch({ type: RECEIVE_NEWS, payload: storedData });
+  } else {
+    try {
+      const res = await axios.get(`${ROOT}/api/v1/search?page=${finalPage}`);
+      storeDataByPage(finalPage, res.data.hits);
+      dispatch({ type: RECEIVE_NEWS, payload: res.data.hits });
+    } catch(e) {
+        console.log(e);
+      dispatch({ type: RECEIVE_NEWS, payload: {} });
+    }
   }
 };
