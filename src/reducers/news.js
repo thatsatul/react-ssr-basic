@@ -1,6 +1,7 @@
 import {
   REQUEST_NEWS,
-  RECEIVE_NEWS
+  RECEIVE_NEWS,
+  UPVOTE
 } from "../action/types";
 
 const INITIAL_STATE = {
@@ -15,7 +16,9 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, isFetching: true };
     }
     case RECEIVE_NEWS: {
-      console.log(action.payload);
+      return { ...state, isFetching: false, data: action.payload };
+    }
+    case UPVOTE: {
       return { ...state, isFetching: false, data: action.payload };
     }
     default:

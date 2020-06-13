@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchNewsTopics } from "../../action/news";
+import { fetchNewsTopics, upVote } from "../../action/news";
 import { Loading } from '../../common';
 import { Filter } from '../Filter';
 import { NewsRow } from '../NewsRow';
 
 const mapStateToProps = ({ news }) => ({ news });
 
-@connect(mapStateToProps, { fetchNewsTopics })
+@connect(mapStateToProps, { fetchNewsTopics, upVote })
 export default class Home extends Component {
   constructor() {
     super();
     this.onNextClick = this.onNextClick.bind(this);
     this.onPreviousClick = this.onPreviousClick.bind(this);
+    this.onUpvoteClick = this.onUpvoteClick.bind(this);
     this.state = {
       page: 0
     };
@@ -46,6 +47,15 @@ export default class Home extends Component {
     }
   }
 
+  onUpvoteClick(e) {
+    console.log(e, e.currenTarget, e.target, e.target.getAttribute("data-num"));
+    e.preventDefault();
+    const index = parseInt(e.target.getAttribute("data-num"));
+    const { news: { data }, upVote } = this.props;
+    const { page } = this.state;
+    upVote(page, index, data);
+  }
+
   render() {
     const { news: { isFetching, data } } = this.props;
 
@@ -60,8 +70,9 @@ export default class Home extends Component {
     return(
       <div className="container">
         <Filter onPreviousClick={this.onPreviousClick} onNextClick={this.onNextClick} />
-        <ul>
-          {data.filter(row => row.title).map(row => <li key={row.objectID}><NewsRow row={row} /></li>)}
+        {/* Event delegation */}
+        <ul onClick={(e) => this.onUpvoteClick(e)}>
+          {data.filter(row => row.title).map((row, index) => <li key={row.objectID}><NewsRow row={row} index={index} /></li>)}
         </ul>
       </div>
     );

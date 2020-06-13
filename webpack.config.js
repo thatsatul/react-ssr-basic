@@ -2,7 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = env => {
-  console.log('Running application in environment: ', env.NODE_ENV);
+  console.log('Running application in environment, Port and Host = ', env.NODE_ENV, env.PORT, env.HOST);
+  console.log('process.env.PORT = ', process.env.PORT + " process.env.HOST = ", process.env.HOST);
 
   return {
     mode: env.NODE_ENV, // development || production
@@ -15,8 +16,10 @@ module.exports = env => {
     devServer: {
       contentBase: path.join(__dirname),
       compress: true,
-      port: 8080,
-      historyApiFallback: true
+      port: process.env.PORT || env.PORT || 8080,
+      host: process.env.HOST || env.HOST || '0.0.0.0',
+      historyApiFallback: true,
+      disableHostCheck: true
     },
     module: {
       rules: [

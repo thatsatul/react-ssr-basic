@@ -3,7 +3,8 @@ import { storeDataByPage, getDataByPage} from '../../utils/storage';
 import {
   ROOT,
   REQUEST_NEWS,
-  RECEIVE_NEWS
+  RECEIVE_NEWS,
+  UPVOTE
 } from "./types";
 
 
@@ -23,4 +24,11 @@ export const fetchNewsTopics = page => async dispatch => {
       dispatch({ type: RECEIVE_NEWS, payload: [] });
     }
   }
+};
+
+export const upVote = (page, index, pageData) => async dispatch => {
+  const row = pageData[index];
+  row['points'] = row['points'] + 1;
+  storeDataByPage(page, pageData);
+  dispatch({ type: UPVOTE, payload: pageData });
 };
