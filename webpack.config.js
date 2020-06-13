@@ -8,7 +8,7 @@ module.exports = env => {
     mode: env.NODE_ENV, // development || production
     entry: './src/index.js',
     output: {
-      filename: env.NODE_ENV === 'development' ? '[name].js' : 'bundle.js',
+      filename: '[name].js',
       sourceMapFilename: '[name].js.map'
     },
     devtool: 'source-map',

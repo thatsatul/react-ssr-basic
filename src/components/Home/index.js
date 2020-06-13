@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchNewsTopics } from "../../action/news";
 import { Loading } from '../../common';
+import { Filter } from '../Filter';
+import { NewsRow } from '../NewsRow';
 
 const mapStateToProps = ({ news }) => ({ news });
 
@@ -9,6 +11,8 @@ const mapStateToProps = ({ news }) => ({ news });
 export default class Home extends Component {
   constructor() {
     super();
+    this.onNextClick = this.onNextClick.bind(this);
+    this.onPreviousClick = this.onPreviousClick.bind(this);
     this.state = {
       page: 0
     };
@@ -55,12 +59,9 @@ export default class Home extends Component {
 
     return(
       <div className="container">
-        <div>
-          <button onClick={() => this.onPreviousClick()}>Previous</button>
-          <button onClick={() => this.onNextClick()}>Next</button>
-        </div>
+        <Filter onPreviousClick={this.onPreviousClick} onNextClick={this.onNextClick} />
         <ul>
-          {data.map(row => <li>{JSON.stringify(row)}</li>)}
+          {data.filter(row => row.title).map(row => <li key={row.objectID}><NewsRow row={row} /></li>)}
         </ul>
       </div>
     );

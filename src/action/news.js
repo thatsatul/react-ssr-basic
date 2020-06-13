@@ -17,10 +17,10 @@ export const fetchNewsTopics = page => async dispatch => {
     try {
       const res = await axios.get(`${ROOT}/api/v1/search?page=${finalPage}`);
       storeDataByPage(finalPage, res.data.hits);
-      dispatch({ type: RECEIVE_NEWS, payload: res.data.hits });
+      dispatch({ type: RECEIVE_NEWS, payload: res.data.hits || []});
     } catch(e) {
         console.log(e);
-      dispatch({ type: RECEIVE_NEWS, payload: {} });
+      dispatch({ type: RECEIVE_NEWS, payload: [] });
     }
   }
 };

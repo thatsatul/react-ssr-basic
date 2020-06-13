@@ -1,0 +1,16 @@
+import React, { Component } from 'react';
+
+export const NewsRow = (props) => {
+  const { row } = props;
+  return(
+    <div className="columns is-multiline">
+      <div className="column is-full">{row.title}</div>
+      <div className="column">
+        <div className="level">
+          <div className="level-left">{row.author}</div>
+          <div className="level-right">{row.points}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
