@@ -9,6 +9,8 @@ module.exports = env => {
     mode: env.NODE_ENV, // development || production
     entry: './src/index.js',
     output: {
+      // path: path.join(__dirname, '/static'),
+      // publicPath: '/static',
       filename: '[name].js',
       sourceMapFilename: '[name].js.map'
     },
@@ -29,7 +31,7 @@ module.exports = env => {
           exclude: /node_modules/
         },
         {
-          test: /\.scss$/,
+          test: /\.scss|\.css$/,
           use: [
             { loader: 'style-loader' },
             { loader: 'css-loader' },

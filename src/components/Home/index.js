@@ -4,6 +4,7 @@ import { fetchNewsTopics, upVote } from "../../action/news";
 import { Loading } from '../../common';
 import { Filter } from '../Filter';
 import { NewsRow } from '../NewsRow';
+import LChart from '../Chart';
 
 const mapStateToProps = ({ news }) => ({ news });
 
@@ -51,9 +52,11 @@ export default class Home extends Component {
     console.log(e, e.currenTarget, e.target, e.target.getAttribute("data-num"));
     e.preventDefault();
     const index = parseInt(e.target.getAttribute("data-num"));
-    const { news: { data }, upVote } = this.props;
-    const { page } = this.state;
-    upVote(page, index, data);
+    if(index >= 0) {
+      const { news: { data }, upVote } = this.props;
+      const { page } = this.state;
+      upVote(page, index, data.filter(row => row.title));
+    }
   }
 
   render() {
@@ -67,13 +70,15 @@ export default class Home extends Component {
       return <div>No Data</div>;
     }
 
+    const finalData = data.filter(row => row.title);
     return(
       <div className="container">
         <Filter onPreviousClick={this.onPreviousClick} onNextClick={this.onNextClick} />
         {/* Event delegation */}
         <ul onClick={(e) => this.onUpvoteClick(e)}>
-          {data.filter(row => row.title).map((row, index) => <li key={row.objectID}><NewsRow row={row} index={index} /></li>)}
+          {finalData.map((row, index) => <li key={row.objectID}><NewsRow row={row} index={index} /></li>)}
         </ul>
+        <LChart data={finalData}/>
       </div>
     );
   }
