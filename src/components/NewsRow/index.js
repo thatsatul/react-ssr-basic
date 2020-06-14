@@ -7,7 +7,9 @@ export const NewsRow = (props) => {
       <div className="columns is-hidden-tablet is-multiline">
         <div className="column is-full news-rw">
           <div className="level is-mobile">
-            <div className="level-item has-text-centered mb-item mb-comment">{row.num_comments}</div>
+            <div className="level-item has-text-centered mb-item mb-comment">
+              {row.num_comments} <span style={{fontSize: 14}}>&nbsp;Comments</span>
+            </div>
             <div className="level-item has-text-centered mb-item mb-author">{row.author}</div>
             <div className="level-item has-text-centered mb-item mb-vote">
               <span data-num={index}>{row.points}</span>
@@ -21,7 +23,7 @@ export const NewsRow = (props) => {
         <div className="column is-full mb-row">{row.title}</div>
       </div>
       <div className="columns is-hidden-touch">
-        <div className="column is-1 ds-row">{row.num_comments}</div>
+        <div className="column is-2 ds-row">{row.num_comments}</div>
         <div className="column is-2 ds-row">{row.author}</div>
         <div className="column is-1 ds-row" data-num={index}>
           <span>{row.points}</span>

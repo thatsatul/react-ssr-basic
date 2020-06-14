@@ -8,6 +8,11 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 16px;
+  padding-bottom: 100px;
+
+  .filter-row {
+    margin-bottom: 14px;
+  }
 }
 
 .columns {
@@ -29,10 +34,6 @@ body {
   img {
     width: 100%;
   }
-}
-
-.container {
-  padding-top: 20px;
 }
 
 .news-row {
@@ -58,11 +59,13 @@ body {
     padding: 2px;
     background-color: whitesmoke;
     text-align: center;
+    text-transform: capitalize;
   }
 
   .ds-row {
     padding: 9px;
-    font-size: 15px
+    font-size: 15px;
+    text-transform: capitalize;
   }
 
   .ds-row-title {
@@ -75,4 +78,19 @@ body {
   font-size: 26px;
   margin-top: 20px;
   font-weight: '500';
+}
+
+.hdr {
+  background-color: slategrey;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.news-topic-header {
+  padding: 9px;
+  font-weight: 700;
 }

@@ -5,6 +5,9 @@ import { Loading } from '../../common';
 import { Filter } from '../../components/Filter';
 import NewsSection from '../../components/NewsSection';
 import LChart from '../../components/Chart';
+import Header from '../../components/Header';
+import RecordsCount from '../../components/RecordsCount';
+
 
 const mapStateToProps = ({ news }) => ({ news });
 
@@ -64,6 +67,7 @@ export default class Home extends Component {
 
   render() {
     const { news: { isFetching, data, isError } } = this.props;
+    const { page } = this.state;
 
     if(isError) {
       return <div>Some error occured while fetching data</div>;
@@ -80,9 +84,10 @@ export default class Home extends Component {
     const finalData = data.filter(row => row.title && !row.hide);
     return(
       <div className="container">
-        <Filter onPreviousClick={this.onPreviousClick} onNextClick={this.onNextClick} />
+        <Header />
+        <Filter onPreviousClick={this.onPreviousClick} onNextClick={this.onNextClick} page={page} />
         {/* Event delegation */}
-        <div style={{textAlign: 'center', fontSize: 19, fontWeight: '500', marginBottom: 12}}>Total number of records: {finalData.length}</div>
+        <RecordsCount data={finalData} />
         <NewsSection data={data} onRowClick={this.onRowClick} />
         <LChart data={data} />
       </div>
