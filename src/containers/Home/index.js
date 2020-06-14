@@ -39,22 +39,18 @@ export default class Home extends Component {
   onNextClick() {
     const { match, history } = this.props;
     const nextPage = parseInt(match.params.pageNum) + 1;
-    console.log('Next Clicked', match, history);
     history.push('/page/'+nextPage);
   }
 
   onPreviousClick() {
-    console.log('Previous Clicked');
     const { match, history } = this.props;
     const prevPage = parseInt(match.params.pageNum) - 1;
     if(prevPage > 0) {
-      console.log('Next Clicked', match, history);
       history.push('/page/'+prevPage);
     }
   }
 
   onRowClick(e) {
-    console.log(e, e.currenTarget, e.target, e.target.getAttribute("data-num"));
     e.preventDefault();
     const { news: { data }, upVote, hideRow } = this.props;
     const { page } = this.state;

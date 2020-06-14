@@ -32,7 +32,6 @@ export default class Chart extends Component {
   }
 
   render() {
-    console.log(this.state.data);
     return (
       <div className="columns">
         <div className="column">

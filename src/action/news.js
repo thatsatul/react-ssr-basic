@@ -21,7 +21,6 @@ export const fetchNewsTopics = page => async dispatch => {
       storeDataByPage(finalPage, res.data.hits);
       dispatch({ type: RECEIVE_NEWS, payload: res.data.hits || []});
     } catch(e) {
-      console.log(e);
       dispatch({ type: RECEIVE_NEWS_ERROR });
     }
   }
