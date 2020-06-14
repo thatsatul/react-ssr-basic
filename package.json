@@ -5,9 +5,10 @@
   "license": "MIT",
   "scripts": {
     "prod": "node_modules/.bin/webpack-dev-server --env.NODE_ENV=production --inline --content-base",
-    "start": "npm install && node_modules/.bin/webpack-dev-server --env.NODE_ENV=production --inline --content-base",
+    "start": "npm install && npm run heroku-prebuild && node_modules/.bin/webpack-dev-server --env.NODE_ENV=production --inline --content-base",
     "dev": "node_modules/.bin/webpack-dev-server --env.NODE_ENV=development --inline --content-base",
-    "lint": "./node_modules/.bin/eslint ."
+    "lint": "./node_modules/.bin/eslint .",
+    "heroku-prebuild": "npm install --dev"
   },
   "dependencies": {
     "axios": "^0.18.0",
