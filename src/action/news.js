@@ -27,8 +27,9 @@ export const fetchNewsTopics = page => async dispatch => {
 };
 
 export const upVote = (page, index, pageData) => async dispatch => {
-  const row = pageData[index];
+  const pageDataCopy = JSON.parse(JSON.stringify(pageData));
+  const row = pageDataCopy[index];
   row['points'] = row['points'] + 1;
-  storeDataByPage(page, pageData);
-  dispatch({ type: UPVOTE, payload: pageData });
+  storeDataByPage(page, pageDataCopy);
+  dispatch({ type: UPVOTE, payload: pageDataCopy });
 };
