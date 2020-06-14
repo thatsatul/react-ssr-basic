@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import Home from "../src/components/Home";
 
 
-export default () => {
+const routeMap = () => {
   return(
     <div>
       <Route
@@ -19,3 +19,5 @@ export default () => {
     </div>
   );
 };
+
+export default routeMap;

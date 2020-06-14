@@ -1,11 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Routes from './Routes';
+import RouteMap from './Routes';
 
-export default () => {
+const routes = () => {
   return (
     <BrowserRouter>
-      <Routes />
+      <RouteMap />
     </BrowserRouter>
   );
 };
+
+export default routes;

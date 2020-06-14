@@ -1,7 +1,9 @@
 module.exports = {
+    "parser": 'babel-eslint',
     "env": {
         "browser": true,
-        "es2020": true
+        "es2020": true,
+        "node": true
     },
     "extends": [
         "eslint:recommended",
@@ -9,7 +11,8 @@ module.exports = {
     ],
     "parserOptions": {
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
+            "legacyDecorators": true
         },
         "ecmaVersion": 11,
         "sourceType": "module"
@@ -18,5 +21,6 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "react/prop-types": 0
     }
 };

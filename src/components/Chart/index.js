@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import {
-  XYPlot,
   XAxis,
   YAxis,
-  ChartLabel,
   HorizontalGridLines,
   VerticalGridLines,
-  LineSeries,
   LineMarkSeries,
   Hint,
   FlexibleWidthXYPlot
