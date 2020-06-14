@@ -39,6 +39,7 @@ export default class Chart extends Component {
     return (
       <div className="columns">
         <div className="column">
+          <h3>Upvote Vs Author Id</h3>
           <div className="chartComp" style={{padding: 20}}>
             <FlexibleWidthXYPlot height={300} xType="ordinal" style={{marginBottom: 50, marginRight: -10}}>
               {/* <VerticalGridLines />
