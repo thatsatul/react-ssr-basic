@@ -36,7 +36,7 @@ export default class Chart extends Component {
     return (
       <div className="columns">
         <div className="column">
-          <h3>Upvote Vs Author Id</h3>
+          <h3 className="has-text-centered chart-lb">Upvote Vs Author Id</h3>
           <div className="chartComp" style={{padding: 20}}>
             <FlexibleWidthXYPlot height={300} xType="ordinal" style={{marginBottom: 50, marginRight: -10}}>
               {/* <VerticalGridLines />
@@ -55,8 +55,8 @@ export default class Chart extends Component {
               <VerticalGridLines />
               <LineMarkSeries
                 data={this.state.data}
-                lineStyle={{stroke:"red"}}
-                markStyle={{stroke:"blue"}}
+                lineStyle={{stroke:"orange"}}
+                markStyle={{stroke:"lightblue"}}
                 onNearestX={(value) => this.setState({ hoverValue: value })}
                 onMouseOut={()=>{
                   this.setState({ hoverValue: null })
@@ -65,7 +65,7 @@ export default class Chart extends Component {
               {this.state.hoverValue
                 ? (
                   <Hint value={this.state.hoverValue}>
-                    <div background={'red'}>
+                    <div style={{color: '#115421', fontSize: 12}}>
                       <div>Upvotes: {this.state.hoverValue.y}</div>
                       <div>AuthorId: {this.state.hoverValue.x}</div>
                     </div>

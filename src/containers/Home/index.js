@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchNewsTopics, upVote } from "../../action/news";
+import { fetchNewsTopics, upVote, hideRow } from "../../action/news";
 import { Loading } from '../../common';
-import { Filter } from '../Filter';
-import { NewsRow } from '../NewsRow';
-import LChart from '../Chart';
+import { Filter } from '../../components/Filter';
+import NewsSection from '../../components/NewsSection';
+import LChart from '../../components/Chart';
 
 const mapStateToProps = ({ news }) => ({ news });
 
-@connect(mapStateToProps, { fetchNewsTopics, upVote })
+@connect(mapStateToProps, { fetchNewsTopics, upVote, hideRow })
 export default class Home extends Component {
   constructor() {
     super();
     this.onNextClick = this.onNextClick.bind(this);
     this.onPreviousClick = this.onPreviousClick.bind(this);
-    this.onUpvoteClick = this.onUpvoteClick.bind(this);
+    this.onRowClick = this.onRowClick.bind(this);
     this.state = {
       page: 0
     };
@@ -48,19 +48,26 @@ export default class Home extends Component {
     }
   }
 
-  onUpvoteClick(e) {
+  onRowClick(e) {
     console.log(e, e.currenTarget, e.target, e.target.getAttribute("data-num"));
     e.preventDefault();
+    const { news: { data }, upVote, hideRow } = this.props;
+    const { page } = this.state;
     const index = parseInt(e.target.getAttribute("data-num"));
-    if(index >= 0) {
-      const { news: { data }, upVote } = this.props;
-      const { page } = this.state;
-      upVote(page, index, data.filter(row => row.title));
+    const hide = parseInt(e.target.getAttribute("data-hide"));
+    if(hide && index >= 0) {
+      hideRow(page, index, data);
+    } else if(index >= 0) {
+      upVote(page, index, data);
     }
   }
 
   render() {
-    const { news: { isFetching, data } } = this.props;
+    const { news: { isFetching, data, isError } } = this.props;
+
+    if(isError) {
+      return <div>Some error occured while fetching data</div>;
+    }
 
     if(isFetching) {
       return <Loading />;
@@ -70,16 +77,16 @@ export default class Home extends Component {
       return <div>No Data</div>;
     }
 
-    const finalData = data.filter(row => row.title);
+    const finalData = data.filter(row => row.title && !row.hide);
     return(
       <div className="container">
         <Filter onPreviousClick={this.onPreviousClick} onNextClick={this.onNextClick} />
         {/* Event delegation */}
-        <ul onClick={(e) => this.onUpvoteClick(e)}>
-          {finalData.map((row, index) => <li key={row.objectID}><NewsRow row={row} index={index} /></li>)}
-        </ul>
-        <LChart data={finalData}/>
+        <div style={{textAlign: 'center', fontSize: 19, fontWeight: '500', marginBottom: 12}}>Total number of records: {finalData.length}</div>
+        <NewsSection data={data} onRowClick={this.onRowClick} />
+        <LChart data={data} />
       </div>
     );
   }
 }
+

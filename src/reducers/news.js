@@ -1,12 +1,15 @@
 import {
   REQUEST_NEWS,
   RECEIVE_NEWS,
-  UPVOTE
+  RECEIVE_NEWS_ERROR,
+  UPVOTE,
+  HIDE_ROW
 } from "../action/types";
 
 const INITIAL_STATE = {
   data: [],
   isFetching: false,
+  isError: false,
   lastUpdate: Date.now()
 };
 
@@ -18,7 +21,13 @@ export default (state = INITIAL_STATE, action) => {
     case RECEIVE_NEWS: {
       return { ...state, isFetching: false, data: action.payload };
     }
+    case RECEIVE_NEWS_ERROR: {
+      return { ...state, isError: true, isFetching: false, data: action.payload };
+    }
     case UPVOTE: {
+      return { ...state, isFetching: false, data: action.payload };
+    }
+    case HIDE_ROW: {
       return { ...state, isFetching: false, data: action.payload };
     }
     default:

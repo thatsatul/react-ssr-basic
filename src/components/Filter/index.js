@@ -3,7 +3,7 @@ import React from 'react';
 export const Filter = (props) => {
   const { onPreviousClick, onNextClick } = props;
   return(
-    <div className="level">
+    <div className="level is-mobile">
       <div className="level-left">
         <button className="button is-primary is-outlined" onClick={() => onPreviousClick()}>Previous</button>
       </div>

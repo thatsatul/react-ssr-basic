@@ -12,7 +12,7 @@ hydrate(
   document.querySelector('#app')
 );
 
-console.log('serviceWorker in navigator', 'serviceWorker' in navigator);
+// console.log('serviceWorker in navigator', 'serviceWorker' in navigator);
 
 // if ('serviceWorker' in navigator) {
 //   window.addEventListener('load', function() {
