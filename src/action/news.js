@@ -22,7 +22,7 @@ export const fetchNewsTopics = page => async dispatch => {
       dispatch({ type: RECEIVE_NEWS, payload: res.data.hits || []});
     } catch(e) {
       console.log(e);
-      dispatch({ type: RECEIVE_NEWS_ERROR, payload: [] });
+      dispatch({ type: RECEIVE_NEWS_ERROR });
     }
   }
 };

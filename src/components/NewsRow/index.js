@@ -11,11 +11,11 @@ export const NewsRow = (props) => {
               {row.num_comments} <span style={{fontSize: 14}}>&nbsp;Comments</span>
             </div>
             <div className="level-item has-text-centered mb-item mb-author">{row.author}</div>
-            <div className="level-item has-text-centered mb-item mb-vote">
+            <div className="level-item has-text-centered mb-item mb-vote" role="button">
               <span data-num={index}>{row.points}</span>
               <img src="../../../static/img/upvote.png" style={{height: 20, width: 20, display: 'inline', marginLeft: 3}} data-num={index}/>
             </div>
-            <div className="level-item has-text-centered mb-item">
+            <div className="level-item has-text-centered mb-item" role="button">
               <img src="../../../static/img/hide.png" style={{height: 20, width: 20, display: 'inline'}} data-num={index} data-hide={1}/>
             </div>
           </div>
@@ -25,11 +25,11 @@ export const NewsRow = (props) => {
       <div className="columns is-hidden-touch">
         <div className="column is-2 ds-row">{row.num_comments}</div>
         <div className="column is-2 ds-row">{row.author}</div>
-        <div className="column is-1 ds-row" data-num={index}>
+        <div className="column is-1 ds-row" data-num={index} role="button">
           <span>{row.points}</span>
           <img src="../../../static/img/upvote.png" style={{height: 20, width: 20, display: 'inline', marginLeft: 3}} data-num={index}/>
         </div>
-        <div className="column is-1 ds-row" data-num={index} data-hide={1}>
+        <div className="column is-1 ds-row" data-num={index} data-hide={1} role="button">
           <img src="../../../static/img/hide.png" style={{height: 20, width: 20, display: 'inline'}} data-num={index} data-hide={1}/>
         </div>
         <div className="column ds-row ds-row-title">{row.title}</div>

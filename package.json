@@ -8,7 +8,9 @@
     "start": "npm install && npm run heroku-prebuild && node_modules/.bin/webpack-dev-server --env.NODE_ENV=production --inline --content-base ",
     "dev": "npm run lint && node_modules/.bin/webpack-dev-server --env.NODE_ENV=development --inline --content-base",
     "lint": "./node_modules/.bin/eslint .",
-    "heroku-prebuild": "npm install --dev"
+    "heroku-prebuild": "npm install --dev",
+    "jest": "node_modules/.bin/jest",
+    "jest-coverage": "node_modules/.bin/jest --coverage"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -33,6 +35,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.0.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -40,7 +43,11 @@
     "babel-runtime": "^6.26.0",
     "eslint": "^7.2.0",
     "eslint-plugin-react": "^7.20.0",
+    "fetch-mock": "^9.10.1",
+    "jest": "^23.6.0",
+    "node-fetch": "^2.6.0",
     "react-router-dom": "^4.2.2",
+    "redux-mock-store": "^1.5.4",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1"

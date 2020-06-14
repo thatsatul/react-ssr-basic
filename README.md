@@ -1,11 +1,13 @@
-# react-ssr-basic
+# Hackernews-Feed
 ** Git repo : https://github.com/thatsatul/react-ssr-basic.git
 
-** To run app locally: npm install && npm run dev
+** To run app locally in development mode: npm install && npm run dev
+
+** To run app i production mode: npm run prod
 
 ** To check lint: npm run lint
 
-** Deploying with docker on heroku: https://cryptic-citadel-91205.herokuapp.com/
+** Deploying app with docker on heroku: https://cryptic-citadel-91205.herokuapp.com/
 
 -Required heroku-cli and docker-cli and inside repo.
 - docker build -t registry.heroku.com/cryptic-citadel-91205/web
@@ -14,7 +16,17 @@
 - Open heroku app
 - To see logs : heroku logs --tail
 
-** Deploying with circleCI: https://sapient-git.herokuapp.com/
+** Deploying app with circleCI CI/CD: https://sapient-git.herokuapp.com/
 
 - All the configurations are inside .circleci/config.yml
 - git push origin master
+
+
+** PWA Enabled
+
+Go to https://sapient-git.herokuapp.com/ > Enable developer tool > Click on network > Turn network offline > Reload page > Page comes from cache
+
+** Unit Test Cases: npm run jest
+
+** Unit test cases covrage: npm run jest-coverage
+

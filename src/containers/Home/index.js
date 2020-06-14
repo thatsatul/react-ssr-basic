@@ -7,6 +7,8 @@ import NewsSection from '../../components/NewsSection';
 import LChart from '../../components/Chart';
 import Header from '../../components/Header';
 import RecordsCount from '../../components/RecordsCount';
+import ErrorComp from '../../components/PageError';
+import NoData from '../../components/Nodata';
 
 
 const mapStateToProps = ({ news }) => ({ news });
@@ -70,7 +72,7 @@ export default class Home extends Component {
     const { page } = this.state;
 
     if(isError) {
-      return <div>Some error occured while fetching data</div>;
+      return <ErrorComp />;
     }
 
     if(isFetching) {
@@ -78,7 +80,7 @@ export default class Home extends Component {
     }
 
     if(!data || data.length <= 0) {
-      return <div>No Data</div>;
+      return <NoData />;
     }
 
     const finalData = data.filter(row => row.title && !row.hide);

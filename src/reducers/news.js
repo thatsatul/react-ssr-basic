@@ -9,8 +9,7 @@ import {
 const INITIAL_STATE = {
   data: [],
   isFetching: false,
-  isError: false,
-  lastUpdate: Date.now()
+  isError: false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -22,7 +21,7 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, isFetching: false, data: action.payload };
     }
     case RECEIVE_NEWS_ERROR: {
-      return { ...state, isError: true, isFetching: false, data: action.payload };
+      return { ...state, isError: true, isFetching: false };
     }
     case UPVOTE: {
       return { ...state, isFetching: false, data: action.payload };

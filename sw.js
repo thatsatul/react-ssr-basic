@@ -2,8 +2,8 @@ var CACHE_NAME = 'pwa-task-manager';
 var urlsToCache = [
   '/',
   '/page/1',
-  // '/static/img/icons-192.png',
-  // '/static/img/icons-512.png',
+  '/static/img/hide.png',
+  '/static/img/upvote.png',
   '/main.js',
   '/manifest.json',
   'https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css'
