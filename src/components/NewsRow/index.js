@@ -8,7 +8,7 @@ export const NewsRow = (props) => {
         <div className="column is-full news-rw">
           <div className="level is-mobile">
             <div className="level-item has-text-centered mb-item mb-comment">
-              {row.num_comments} <span style={{fontSize: 14}}>&nbsp;Comments</span>
+              {row.num_comments} <span style={{fontSize: 14}}>&nbsp;Cts</span>
             </div>
             <div className="level-item has-text-centered mb-item mb-author">{row.author}</div>
             <div className="level-item has-text-centered mb-item mb-vote">
