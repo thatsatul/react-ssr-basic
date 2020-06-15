@@ -25,7 +25,8 @@
 
 ** PWA Enabled
 
-Go to https://sapient-git.herokuapp.com/ > Enable developer tool > Click on network > Turn network offline > Reload page > Page comes from cache
+- App is installable and can run as native
+- Go to https://sapient-git.herokuapp.com/ > Enable developer tool > Click on network > Turn network offline > Reload page > Page comes from cache
 
 ** Unit Test Cases: npm run jest
 

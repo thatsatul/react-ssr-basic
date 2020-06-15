@@ -8,7 +8,7 @@
     "start": "npm install && npm run heroku-prebuild && node_modules/.bin/webpack-dev-server --env.NODE_ENV=production --inline --content-base ",
     "dev": "npm run lint && node_modules/.bin/webpack-dev-server --env.NODE_ENV=development --inline --content-base",
     "lint": "./node_modules/.bin/eslint .",
-    "heroku-prebuild": "npm install --dev",
+    "heroku-prebuild": "npm install --only=dev",
     "jest": "node_modules/.bin/jest",
     "jest-coverage": "node_modules/.bin/jest --coverage"
   },
