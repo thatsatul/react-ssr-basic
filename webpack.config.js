@@ -6,7 +6,7 @@ module.exports = env => {
   console.log('process.env.PORT = ', process.env.PORT + " process.env.HOST = ", process.env.HOST);
 
   return {
-    mode: env.NODE_ENV, // development || production
+    mode: 'production', // development || production
     entry: './src/index.js',
     output: {
       // path: path.join(__dirname, '/static'),
