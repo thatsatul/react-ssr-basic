@@ -18,8 +18,8 @@ module.exports = env => {
     devServer: {
       contentBase: path.join(__dirname),
       compress: true,
-      port: process.env.PORT || env.PORT || 8080,
-      host: '0.0.0.0',
+      port: process.env.PORT,
+      host: process.env.HOST || env.HOST || '0.0.0.0',
       historyApiFallback: true,
       disableHostCheck: true
     },
