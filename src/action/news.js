@@ -1,5 +1,5 @@
-import { storeDataByPage, getDataByPage} from '../../utils/storage';
-import { get } from '../../utils/request';
+import { storeDataByPage, getDataByPage} from '../utils/storage';
+import { get } from '../utils/request';
 import {
   REQUEST_NEWS,
   RECEIVE_NEWS,

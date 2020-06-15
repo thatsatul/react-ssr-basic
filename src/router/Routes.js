@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import Home from "../src/containers/Home";
+import Home from "../containers/Home";
 
 
 const routeMap = () => {
