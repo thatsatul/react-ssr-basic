@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git://github.com/thatsatul/react-ssr-basic.git"
   },
+  "engines": {
+    "node": "10.x"
+  },
   "scripts": {
     "prod": "node_modules/.bin/webpack-dev-server --env.NODE_ENV=production --inline --content-base",
     "start": "npm install && npm install --dev && node_modules/.bin/webpack-dev-server --env.NODE_ENV=production --inline --content-base",
