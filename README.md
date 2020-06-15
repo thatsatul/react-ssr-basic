@@ -10,16 +10,17 @@
 ** Deploying app with docker on heroku: https://cryptic-citadel-91205.herokuapp.com/
 
 -Required heroku-cli and docker-cli and inside repo.
-- docker build -t registry.heroku.com/cryptic-citadel-91205/web
+- docker build -t registry.heroku.com/cryptic-citadel-91205/web .
 - docker push registry.heroku.com/cryptic-citadel-91205/web
-- heroku container:release web
+- heroku container:release web worker
 - Open heroku app
-- To see logs : heroku logs --tail
+- To see logs : heroku logs --tail --app cryptic-citadel-91205
 
 ** Deploying app with circleCI CI/CD: https://sapient-git.herokuapp.com/
 
 - All the configurations are inside .circleci/config.yml
 - git push origin master
+- heroku logs -t --app sapient-git
 
 
 ** PWA Enabled
