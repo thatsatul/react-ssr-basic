@@ -26,7 +26,7 @@ export default class Chart extends Component {
     const { data } = props;
     const finalData = [];
     data.forEach(row => {
-      finalData.push({y: row.points, x: row.objectID})
+      finalData.push({y: row.points, x: row.author || row.objectID})
     });
     return {...state, data: finalData};
   }
@@ -35,13 +35,13 @@ export default class Chart extends Component {
     return (
       <div className="columns">
         <div className="column">
-          <h3 className="has-text-centered chart-lb">Upvotes - Author Id</h3>
+          <h3 className="has-text-centered chart-lb">Upvotes - Author</h3>
           <div className="chartComp" style={{padding: 20}}>
-            <FlexibleWidthXYPlot height={300} xType="ordinal" style={{marginBottom: 50, marginRight: -10}}>
+            <FlexibleWidthXYPlot height={340} xType="ordinal" margin={{ left: 60, bottom: 90 }}>
               {/* <VerticalGridLines />
               <HorizontalGridLines /> */}
               <XAxis
-                  title="Author Id"
+                  title="Author"
                   tickLabelAngle={-90}
                   style={{
                     line: {stroke: '#ADDDE1'},
