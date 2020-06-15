@@ -9,7 +9,7 @@
   },
   "scripts": {
     "prod": "node_modules/.bin/webpack-dev-server --env.NODE_ENV=production --inline --content-base",
-    "start": "node_modules/.bin/webpack-dev-server --env.NODE_ENV=production --inline --content-base",
+    "start": "npm install && npm install --dev && node_modules/.bin/webpack-dev-server --env.NODE_ENV=production --inline --content-base",
     "dev": "npm run lint && node_modules/.bin/webpack-dev-server --env.NODE_ENV=development --inline --content-base",
     "lint": "./node_modules/.bin/eslint .",
     "heroku-prebuild": "npm install --only=dev",
