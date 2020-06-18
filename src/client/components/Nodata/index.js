@@ -1,7 +1,7 @@
 import React from 'react';
 
 const noData = () => (
-  <div className="no-data">
+  <div style={{fontWeight: 500, textAlign: 'center'}}>
     No data found
   </div>
 );

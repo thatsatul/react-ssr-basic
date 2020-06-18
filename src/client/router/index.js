@@ -1,11 +1,10 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from "../containers/Home";
 
-
-const routeMap = () => {
+const router = () => {
   return(
-    <div>
+    <Switch>
       <Route
         exact
         path="/"
@@ -16,8 +15,8 @@ const routeMap = () => {
         path="/page/:pageNum"
         component={Home}
       />
-    </div>
+    </Switch>
   );
 };
 
-export default routeMap;
+export default router;

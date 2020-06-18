@@ -9,10 +9,6 @@ import {
   FlexibleWidthXYPlot
 } from 'react-vis';
 
-import '../../../node_modules//react-vis/dist/style.css';
-
-// var LineChart = reactD3Components.LineChart;
-
 export default class Chart extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +28,7 @@ export default class Chart extends Component {
   }
 
   render() {
+
     return (
       <div className="columns">
         <div className="column">

@@ -1,2 +1,4 @@
 coverage/**
 __test__/**
+dist/**
+node_modules/**

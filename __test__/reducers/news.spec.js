@@ -1,5 +1,5 @@
-import reducer from '../../src/reducers/news';
-import * as types from '../../src/action/types';
+import reducer from '../../src/client/reducers/news';
+import * as types from '../../src/client/action/types';
 
 const INITIAL_STATE = {
   data: [],

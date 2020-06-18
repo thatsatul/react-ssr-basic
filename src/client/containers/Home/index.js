@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchNewsTopics, upVote, hideRow } from "../../action/news";
-import { Loading } from '../../common';
+import Loading from '../../common/Loading'; 
 import { Filter } from '../../components/Filter';
 import NewsSection from '../../components/NewsSection';
-import LChart from '../../components/Chart';
 import Header from '../../components/Header';
 import RecordsCount from '../../components/RecordsCount';
 import ErrorComp from '../../components/PageError';
 import NoData from '../../components/Nodata';
-
+import LChart from '../../components/Chart';
 
 const mapStateToProps = ({ news }) => ({ news });
 
-@connect(mapStateToProps, { fetchNewsTopics, upVote, hideRow })
-export default class Home extends Component {
+const mapDispatchFromProps = dispatch => (
+  { 
+    fetchNewsTopics: page => dispatch(fetchNewsTopics(page)),
+    upVote: (page, i, data) => dispatch(upVote(page, i, data)),
+    hideRow: (page, i, data) => dispatch(hideRow(page, i, data))
+  }
+);
+
+class Home extends Component {
   constructor() {
     super();
     this.onNextClick = this.onNextClick.bind(this);
@@ -76,20 +82,23 @@ export default class Home extends Component {
     }
 
     if(!data || data.length <= 0) {
-      return <NoData />;
+      return (
+          <NoData />
+      );
     }
 
-    const finalData = data.filter(row => row.title && !row.hide);
+    const finalData = data && data.filter(row => row.title && !row.hide) || [];
     return(
       <div className="container">
         <Header />
         <Filter onPreviousClick={this.onPreviousClick} onNextClick={this.onNextClick} page={page} />
-        {/* Event delegation */}
+        {/* Event delegation  */}
         <RecordsCount data={finalData} />
         <NewsSection data={data} onRowClick={this.onRowClick} />
-        <LChart data={data} />
+          <LChart data={data} />
       </div>
     );
   }
 }
 
+export default connect(mapStateToProps, mapDispatchFromProps)(Home);

@@ -1,9 +1,10 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import * as actions from '../../src/action/news';
-import * as types from '../../src/action/types';
 import fetchMock from 'fetch-mock';
 import expect from 'expect'; // You can use any testing library
+
+import * as actions from '../../src/client/action/news';
+import * as types from '../../src/client/action/types';
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
