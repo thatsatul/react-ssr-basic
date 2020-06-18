@@ -5,6 +5,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from "redux";
+import compression from 'compression';
 
 import  newsApp  from '../src/client/reducers';
 import reduxThunk from "redux-thunk";
@@ -13,6 +14,7 @@ import Layout from './client/layout';
 
 const port = process.env.PORT || 3000;
 const server = express();
+server.use(compression());
 server.use(express.static('dist'));
 server.use('/static', express.static('static'));
 
@@ -44,6 +46,7 @@ function handleRender(req, res) {
   // console.log('***** layout ******', htmlToRender);
 
   // Send the rendered page back to the client
+  // res.set('Content-Encoding', 'gzip');
   res.send(htmlToRender);
 }
 

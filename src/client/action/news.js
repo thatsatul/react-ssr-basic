@@ -10,9 +10,6 @@ import {
 
 
 export const fetchNewsTopics = page => async dispatch => {
-  if(!page) {
-    return;
-  }
   dispatch({ type: REQUEST_NEWS });
   const finalPage = page || 1;
   const storedData = getDataByPage(finalPage);
@@ -21,7 +18,7 @@ export const fetchNewsTopics = page => async dispatch => {
   } else {
     try {
       const res = await get(`/api/v1/search?page=${finalPage}`);
-      // storeDataByPage(finalPage, res.data.hits);
+      storeDataByPage(finalPage, res.data.hits);
       dispatch({ type: RECEIVE_NEWS, payload: res.data.hits || []});
     } catch(e) {
       dispatch({ type: RECEIVE_NEWS_ERROR });

@@ -8,8 +8,7 @@ const Layout = ({ html, preloadedState }) => `
       <meta name="Description" content="This site provides feeds from HackerNews ">
       <meta name="theme-color" content="#db5945">
       <base href="/" />
-      <link rel="manifest" href="/manifest.json">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+      <link rel="manifest" href="/static/manifest.json">
       <title>Hackernews Feed</title>
     </head>
 
@@ -25,7 +24,7 @@ const Layout = ({ html, preloadedState }) => `
         // https://redux.js.org/recipes/server-rendering/#security-considerations
         window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
       </script>
-      <script src="client.js"></script>
+      <script src="client.js" defer></script>
     </body>
 
   </html>

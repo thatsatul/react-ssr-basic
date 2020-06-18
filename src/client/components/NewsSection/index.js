@@ -9,7 +9,7 @@ const newsSection = (props) => {
         <div className="column is-2 ds-row-header">Comments</div>
         <div className="column is-2 ds-row-header">Author</div>
         <div className="column is-1 ds-row-header">Upvotes</div>
-        <div className="column is-1 ds-row-header"></div>
+        <div className="column is-1 ds-row-header">Hide</div>
         <div className="column">Topic</div>
       </div>
       <ul onClick={(e) => onRowClick(e)}>

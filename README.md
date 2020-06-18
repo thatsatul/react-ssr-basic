@@ -32,3 +32,64 @@
 
 ** Unit test cases covrage: npm run jest-coverage
 
+** Jest output :
+
+Acids-Macbook:react-ssr-hydration atulanand$ 
+Acids-Macbook:react-ssr-hydration atulanand$ npm run jest
+
+> react-ssr-hydration@1.0.0 jest /Users/atulanand/projects/interviews/react-ssr-hydration
+> jest
+
+ PASS  __test__/reducers/news.spec.js
+ PASS  __test__/actions/news.spec.js
+
+Test Suites: 2 passed, 2 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        6.872s
+Ran all test suites.
+Acids-Macbook:react-ssr-hydration atulanand$ 
+
+
+** Lint output
+
+Acids-Macbook:react-ssr-hydration atulanand$ npm run lint
+
+> react-ssr-hydration@1.0.0 lint /Users/atulanand/projects/interviews/react-ssr-hydration
+> eslint . && echo 'Lint successful and no errors found'
+
+Warning: React version not specified in eslint-plugin-react settings. See https://github.com/yannickcr/eslint-plugin-react#configuration .
+
+Lint successful and no errors found
+
+Acids-Macbook:react-ssr-hydration atulanand$ 
+
+** Jest Coverage:
+
+Acids-Macbook:react-ssr-hydration atulanand$ npm run jest-coverage
+
+> react-ssr-hydration@1.0.0 jest-coverage /Users/atulanand/projects/interviews/react-ssr-hydration
+> jest --coverage
+
+ PASS  __test__/reducers/news.spec.js
+ PASS  __test__/actions/news.spec.js
+-------------|----------|----------|----------|----------|-------------------|
+File         |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+-------------|----------|----------|----------|----------|-------------------|
+All files    |    88.71 |    68.42 |       80 |    88.14 |                   |
+ action      |    93.55 |    66.67 |      100 |    92.86 |                   |
+  news.js    |       92 |    66.67 |      100 |    90.91 |             17,24 |
+  types.js   |      100 |      100 |      100 |      100 |                   |
+ reducers    |     87.5 |    85.71 |      100 |     87.5 |                   |
+  news.js    |     87.5 |    85.71 |      100 |     87.5 |                30 |
+ utils       |    82.61 |       50 |     62.5 |    82.61 |                   |
+  request.js |      100 |      100 |      100 |      100 |                   |
+  storage.js |       80 |       50 |    57.14 |       80 |       11,15,19,23 |
+-------------|----------|----------|----------|----------|-------------------|
+
+Test Suites: 2 passed, 2 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        7.464s
+Ran all test suites.
+Acids-Macbook:react-ssr-hydration atulanand$ 

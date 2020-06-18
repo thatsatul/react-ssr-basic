@@ -36,7 +36,7 @@ const commonConfig = env => ({
         ]
       }
     ]
-  },
+  },  
 });
 
 const serverConfig = env => {
@@ -65,7 +65,7 @@ const clientConfig = env => {
       sourceMapFilename: 'client.js.map',
       publicPath: '/',
     },
-    devtool: 'source-map',
+    devtool: env.NODE_ENV === 'development' ? 'source-map' : false,
     devServer: {
       contentBase: path.join(__dirname, 'dist'),
       compress: true,
