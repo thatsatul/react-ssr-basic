@@ -12,8 +12,7 @@
     "lint": "./node_modules/.bin/eslint . && echo 'Lint successful and no errors found'",
     "jest": "node_modules/.bin/jest",
     "jest-coverage": "node_modules/.bin/jest --coverage",
-    "build": "npm install && npm install --dev && webpack --env.NODE_ENV=production",
-    "start": "HOST=0.0.0.0 node ./dist/server.js"
+    "start": "npm install && npm install --dev && webpack --env.NODE_ENV=production && HOST=0.0.0.0 node ./dist/server.js"
   },
   "author": "Atul Anand",
   "license": "MIT",
