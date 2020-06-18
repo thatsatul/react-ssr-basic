@@ -7,15 +7,13 @@
     "node": "10.x"
   },
   "scripts": {
-    "build": "webpack --env.NODE_ENV=production",
-    "prod-server": "HOST=0.0.0.0 node ./dist/server.js ",
-    "start": "npm install && npm run heroku-prebuild && npm run prod",
-    "prod": "webpack --env.NODE_ENV=production && npm run prod-server",
+    "prod": "webpack --env.NODE_ENV=production && npm run start",
     "dev-all": "rimraf dist && webpack --env.NODE_ENV=development && concurrently \"webpack --env.NODE_ENV=development --watch\" \"nodemon --watch src/client ./dist/server.js\"",
     "lint": "./node_modules/.bin/eslint . && echo 'Lint successful and no errors found'",
-    "heroku-prebuild": "npm install --dev",
     "jest": "node_modules/.bin/jest",
-    "jest-coverage": "node_modules/.bin/jest --coverage"
+    "jest-coverage": "node_modules/.bin/jest --coverage",
+    "build": "npm install && npm install --dev && webpack --env.NODE_ENV=production",
+    "start": "HOST=0.0.0.0 node ./dist/server.js"
   },
   "author": "Atul Anand",
   "license": "MIT",
