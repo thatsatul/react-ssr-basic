@@ -4,9 +4,10 @@
   "description": "React SSR",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && npm run heroku-prebuild && npm run prod",
     "build": "webpack --env.NODE_ENV=production",
-    "prod": "webpack --env.NODE_ENV=production && node ./dist/server.js",
+    "prod-server": "HOST=0.0.0.0 node ./dist/server.js ",
+    "start": "npm install && npm run heroku-prebuild && npm run prod",
+    "prod": "webpack --env.NODE_ENV=production && npm run prod-server",
     "dev-all": "rimraf dist && webpack --env.NODE_ENV=development && concurrently \"webpack --env.NODE_ENV=development --watch\" \"nodemon --watch src/client ./dist/server.js\"",
     "lint": "./node_modules/.bin/eslint . && echo 'Lint successful and no errors found'",
     "heroku-prebuild": "npm install --dev",

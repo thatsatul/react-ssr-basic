@@ -13,6 +13,9 @@ import Router from './client/router';
 import Layout from './client/layout';
 
 const port = process.env.PORT || 3000;
+const host = process.env.HOST || '0.0.0.0';
+console.log(`HOST and PORT = ${host} and ${port}`);
+
 const server = express();
 server.use(compression());
 server.use(express.static('dist'));
@@ -50,5 +53,5 @@ function handleRender(req, res) {
   res.send(htmlToRender);
 }
 
-server.listen(port);
+server.listen(port, host);
 console.log(`Serving at http://localhost:${port}`);
