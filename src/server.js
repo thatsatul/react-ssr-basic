@@ -12,9 +12,10 @@ import reduxThunk from "redux-thunk";
 import Router from './client/router';
 import Layout from './client/layout';
 
-const port = process.env.PORT || 3000;
+const port = process.env.SERVER_PORT || 3000;
 const host = process.env.HOST || '0.0.0.0';
-console.log(`Env HOST and PORT = ${process.env.HOST} and ${process.env.PORT}`);
+
+console.log(`Env HOST and PORT = ${process.env.HOST} and ${process.env.SERVER_PORT}`);
 console.log(`Final HOST and PORT = ${host} and ${port}`);
 
 const server = express();

@@ -1,0 +1,1 @@
+web: npm run build && SERVER_PORT=$PORT HOST=0.0.0.0 npm run start
