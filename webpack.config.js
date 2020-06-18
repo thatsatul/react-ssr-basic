@@ -7,6 +7,8 @@ const commonConfig = env => ({
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: env.NODE_ENV === 'development' ? '"development"' : '"production"',
+        SERVER_PORT: env.SERVER_PORT
+        // HOST: env.H '0.0.0.0'
       },
     }),
     new UglifyJsPlugin({
@@ -36,10 +38,12 @@ const commonConfig = env => ({
         ]
       }
     ]
-  },  
+  }
 });
 
 const serverConfig = env => {
+  // console.log('Running application in environment, Port and Host = ', env.NODE_ENV, env.PORT, env.HOST);
+  // console.log('process.env.PORT = ', process.env.PORT + " process.env.HOST = ", process.env.HOST);
   const commonCg = commonConfig(env);
   return {
     ...commonCg,
@@ -51,6 +55,10 @@ const serverConfig = env => {
       publicPath: '/',
     },
     externals: nodeExternals(),
+    devServer: {
+      port: process.env.PORT || env.PORT || 3000,
+      host: process.env.HOST || env.HOST || '0.0.0.0'
+    }
   };
 }
 

@@ -1,1 +1,1 @@
-web: npm run build && SERVER_PORT=$PORT HOST=0.0.0.0 node ./dist/server.js
+web: npm install && npm run build -- --env.SERVER_PORT=$PORT && npm start

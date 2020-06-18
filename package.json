@@ -7,12 +7,13 @@
     "node": "10.x"
   },
   "scripts": {
-    "prod": "webpack --env.NODE_ENV=production && HOST=0.0.0.0 node ./dist/server.js",
+    "prod": "webpack --env.NODE_ENV=production && node ./dist/server.js",
     "dev-all": "rimraf dist && webpack --env.NODE_ENV=development && concurrently \"webpack --env.NODE_ENV=development --watch\" \"nodemon --watch src/client ./dist/server.js\"",
     "lint": "./node_modules/.bin/eslint . && echo 'Lint successful and no errors found'",
     "jest": "node_modules/.bin/jest",
     "jest-coverage": "node_modules/.bin/jest --coverage",
-    "build": "npm install --production && webpack --env.NODE_ENV=production"
+    "build": "webpack --env.NODE_ENV=production --env.HOST=0.0.0.0",
+    "start": "node ./dist/server.js"
   },
   "author": "Atul Anand",
   "license": "MIT",
