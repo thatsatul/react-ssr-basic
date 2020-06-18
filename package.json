@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "React SSR",
   "main": "index.js",
+  "engines": {
+    "node": "10.x"
+  },
   "scripts": {
     "build": "webpack --env.NODE_ENV=production",
     "prod-server": "HOST=0.0.0.0 node ./dist/server.js ",
