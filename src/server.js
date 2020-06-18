@@ -14,7 +14,8 @@ import Layout from './client/layout';
 
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || '0.0.0.0';
-console.log(`HOST and PORT = ${host} and ${port}`);
+console.log(`Env HOST and PORT = ${process.env.HOST} and ${process.env.PORT}`);
+console.log(`Final HOST and PORT = ${host} and ${port}`);
 
 const server = express();
 server.use(compression());
