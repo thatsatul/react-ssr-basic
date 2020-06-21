@@ -7,13 +7,14 @@
     "node": "10.x"
   },
   "scripts": {
-    "prod": "webpack --env.NODE_ENV=production && node ./dist/server.js",
-    "dev-all": "webpack --env.NODE_ENV=development && concurrently \"webpack --env.NODE_ENV=development --watch\" \"nodemon ./dist/server.js\"",
+    "prod": "npm run cpFiles && webpack --env.NODE_ENV=production && node ./dist/server.js",
+    "dev-all": "npm run cpFiles && webpack --env.NODE_ENV=development && concurrently \"webpack --env.NODE_ENV=development --watch\" \"nodemon ./dist/server.js\"",
     "lint": "./node_modules/.bin/eslint . && echo 'Lint successful and no errors found'",
     "jest": "node_modules/.bin/jest",
     "jest-coverage": "node_modules/.bin/jest --coverage",
     "build": "webpack --env.NODE_ENV=production --env.HOST=0.0.0.0",
-    "start": "node ./dist/server.js"
+    "start": "node ./dist/server.js",
+    "cpFiles": "cp ./sw.js ./dist/sw.js && cp ./manifest.json ./dist/manifest.json && cp ./robots.txt ./dist/robots.txt"
   },
   "author": "Atul Anand",
   "license": "MIT",

@@ -1,1 +1,1 @@
-web: npm install && npm run build -- --env.SERVER_PORT=$PORT && npm start
+web: npm run cpFiles && npm install && npm run build -- --env.SERVER_PORT=$PORT && npm start

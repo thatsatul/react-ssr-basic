@@ -4,7 +4,10 @@ var urlsToCache = [
   '/page/1',
   '/static/img/hide.png',
   '/static/img/upvote.png',
-  '/main.js',
+  '/static/img/icons-192.png',
+  '/static/img/icons-512.png',
+  '/static/img/loading.svg',
+  '/client.js',
   '/manifest.json',
   'https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css'
 ];
