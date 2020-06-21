@@ -32,7 +32,7 @@ hydrate(
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     // navigator.serviceWorker.getRegistrations().then((r)=>{r[0].unregister()});
-    navigator.serviceWorker.register('/sw.js', {scope: '/'})
+    navigator.serviceWorker.register('./sw.js', {scope: '/'})
     .then(function(registration) {
       // Successful registration
       console.log('Hooray. Service Worker registration successful, scope is:', registration.scope);

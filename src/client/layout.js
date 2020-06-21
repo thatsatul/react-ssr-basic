@@ -8,7 +8,7 @@ const Layout = ({ html, preloadedState }) => `
       <meta name="Description" content="This site provides feeds from HackerNews ">
       <meta name="theme-color" content="#db5945">
       <base href="/" />
-      <link rel="manifest" href="manifest.json">
+      <link rel="manifest" href="/manifest.json">
       <title>Hackernews Feed</title>
     </head>
 

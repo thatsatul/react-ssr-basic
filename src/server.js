@@ -25,7 +25,7 @@ server.use('/static', express.static('static'));
 
 // This is fired every time the server side receives a request
 server.use((req, res, next) => {
-  console.log('**** Called on all server side request ****');
+  console.log('**** Middleware - called on every server side request ****');
   next();
 });
 
