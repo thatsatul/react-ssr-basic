@@ -8,13 +8,14 @@ const Layout = ({ html, preloadedState }) => `
       <meta name="Description" content="This site provides feeds from HackerNews ">
       <meta name="theme-color" content="#db5945">
       <base href="/" />
-      <link rel="manifest" href="/static/manifest.json">
+      <link rel="manifest" href="manifest.json">
       <title>Hackernews Feed</title>
     </head>
 
     <body>
       <div id="app">${html}</div>
       <noscript>Your browser does not support Javascript</noscript>
+      <script src="client.js"></script>
       <link rel="icon" sizes="192x192" href="/static/img/icons-192.png">
       <link rel="icon" sizes="512x512" href="/static/img/icons-512.png">
       <link rel="apple-touch-icon" href="/static/img/icons-192.png">
@@ -24,9 +25,7 @@ const Layout = ({ html, preloadedState }) => `
         // https://redux.js.org/recipes/server-rendering/#security-considerations
         window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
       </script>
-      <script src="client.js" defer></script>
     </body>
-
   </html>
 `;
 

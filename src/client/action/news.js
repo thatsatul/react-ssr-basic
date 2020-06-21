@@ -11,9 +11,10 @@ import {
 
 export const fetchNewsTopics = page => async dispatch => {
   dispatch({ type: REQUEST_NEWS });
+  // const res1 = await get('/api/test', false); // test api to check server side call
   const finalPage = page || 1;
   const storedData = getDataByPage(finalPage);
-  if(storedData) {
+  if(storedData && storedData !== 'undefined') {
     dispatch({ type: RECEIVE_NEWS, payload: storedData });
   } else {
     try {

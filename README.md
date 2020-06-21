@@ -93,3 +93,5 @@ Snapshots:   0 total
 Time:        7.464s
 Ran all test suites.
 Acids-Macbook:react-ssr-hydration atulanand$ 
+
+Lighthouse score: Please check file lh_score.png for the score. (Environment - localhost)

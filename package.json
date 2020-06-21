@@ -8,7 +8,7 @@
   },
   "scripts": {
     "prod": "webpack --env.NODE_ENV=production && node ./dist/server.js",
-    "dev-all": "rimraf dist && webpack --env.NODE_ENV=development && concurrently \"webpack --env.NODE_ENV=development --watch\" \"nodemon --watch src/client ./dist/server.js\"",
+    "dev-all": "webpack --env.NODE_ENV=development && concurrently \"webpack --env.NODE_ENV=development --watch\" \"nodemon ./dist/server.js\"",
     "lint": "./node_modules/.bin/eslint . && echo 'Lint successful and no errors found'",
     "jest": "node_modules/.bin/jest",
     "jest-coverage": "node_modules/.bin/jest --coverage",

@@ -1,4 +1,6 @@
-/* eslint-disable react/jsx-filename-extension */
+const http2 = require('http2');
+const fs = require('fs');
+
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
@@ -18,37 +20,24 @@ const host = process.env.HOST || '0.0.0.0';
 console.log(`Env HOST and PORT = ${process.env.HOST} and ${process.env.SERVER_PORT}`);
 console.log(`Final HOST and PORT = ${host} and ${port}`);
 
-const server = express();
-server.use(compression());
-server.use(express.static('dist'));
-server.use('/static', express.static('static'));
+const options = {
+  key: fs.readFileSync('./self.key'),
+  cert: fs.readFileSync('./self.crt')
+}
 
-// This is fired every time the server side receives a request
-server.use((req, res, next) => {
-  console.log('**** Called on all server side request ****');
-  next();
-});
+const server = http2.createSecureServer(options);
 
-server.use('/api/test', (req, res, next) => {
-  console.log('*** REQUEST ***', req.originalUrl);
-  res.status(200).send({
-    res: 'server req done',
-  });
-});
+server.on('error', (err) => console.error(err));
 
-// Creating a single index route to server our React application from.
-server.get('*', handleRender);
+server.on('stream', (stream, headers) => {
 
-function handleRender(req, res) {
-  // Create a new Redux store instance
-  // res.writeHead(200, { "Content-Type": "text/html" });
+  console.log('****** Stream ******', stream);
+
   const store = createStore(newsApp, {}, applyMiddleware(reduxThunk));
   const context = {};
-
-  // Render the component to a string
   const html = renderToString(
     <Provider store={store}>
-      <StaticRouter location={req.url} context={context}>
+      <StaticRouter location={'/'} context={context}>
         <Router />
       </StaticRouter>
     </Provider>
@@ -63,8 +52,12 @@ function handleRender(req, res) {
 
   // Send the rendered page back to the client
   // res.set('Content-Encoding', 'gzip');
-  res.send(htmlToRender);
-}
+  // stream is a Duplex
+  stream.respond({
+    'content-type': 'text/html',
+    ':status': 200
+  });
+  stream.end(htmlToRender);
+});
 
-server.listen(port, host);
-console.log(`Serving at http://localhost:${port}`);
+server.listen(8443, () => console.log('Server started on port 8443'));
