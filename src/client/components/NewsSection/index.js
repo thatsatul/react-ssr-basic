@@ -12,8 +12,8 @@ const newsSection = (props) => {
         <div className="column is-1 ds-row-header">Hide</div>
         <div className="column">Topic</div>
       </div>
-      <ul onClick={(e) => onRowClick(e)}>
-        {data.map((row, index) => row.title && !row.hide ? <li key={row.objectID}><NewsRow row={row} index={index} /></li> : null)}
+      <ul onClick={(e) => onRowClick('click', e)} onKeyPress={(e) => onRowClick('press', e)}>
+        {data.map((row, index) => row.title && !row.hide ? <li key={row.objectID} ><NewsRow row={row} index={index} /></li> : null)}
       </ul>
     </div>
   );

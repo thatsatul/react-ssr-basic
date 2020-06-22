@@ -56,12 +56,18 @@ class Home extends Component {
     }
   }
 
-  onRowClick(e) {
+  onRowClick(type, e) {
     e.preventDefault();
     const { news: { data }, upVote, hideRow } = this.props;
     const { page } = this.state;
     const index = parseInt(e.target.getAttribute("data-num"));
     const hide = parseInt(e.target.getAttribute("data-hide"));
+    // console.log('****** hide, index ******', hide, index);
+    if(type == 'press') {
+      if(e.which !== 13) {
+        return;
+      }
+    }
     if(hide && index >= 0) {
       hideRow(page, index, data);
     } else if(index >= 0) {

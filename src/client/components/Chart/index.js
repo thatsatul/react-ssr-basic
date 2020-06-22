@@ -21,7 +21,7 @@ export default class Chart extends Component {
   static getDerivedStateFromProps(props, state) {
     const { data } = props;
     const finalData = [];
-    data.forEach(row => {
+    data.filter(row => row.title && !row.hide).forEach(row => {
       finalData.push({y: row.points, x: row.author || row.objectID})
     });
     return {...state, data: finalData};
