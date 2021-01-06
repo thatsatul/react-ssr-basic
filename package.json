@@ -34,7 +34,7 @@
   "dependencies": {
     "@atlaskit/button": "^8.0.1",
     "@atlaskit/checkbox": "^3.0.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "express": "^4.14.0",
     "fetch-mock": "^9.10.1",
     "react": "16.12.0",
